@@ -18,9 +18,9 @@ namespace Catalog.API.Repositories
             _context = context;
         }
 
-        public async Task Create(IEnumerable<Product> product)
+        public async Task Create(Product product)
         {
-            await _context.Products.InsertManyAsync(product);
+            await _context.Products.InsertOneAsync(product);
         }
 
         public async Task<bool> Delete(string id)

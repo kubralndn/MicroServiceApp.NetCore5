@@ -55,11 +55,11 @@ namespace Catalog.API.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> CreateProduct([FromBody] IEnumerable<Product> product)
+        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Product>>> CreateProduct([FromBody] Product product)
         {
             await _repository.Create(product);
-            return CreatedAtRoute("GetProductByID", new { id = product.Select(x => x.Id) }, product);
+            return CreatedAtRoute("GetProductByID", new { id = product.Id }, product);
         }
 
         [HttpPut]
