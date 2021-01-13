@@ -9,13 +9,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Catalog.API
 {
-   
     public class Program
     {
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-        
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -24,7 +22,5 @@ namespace Catalog.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-
-        
     }
 }
