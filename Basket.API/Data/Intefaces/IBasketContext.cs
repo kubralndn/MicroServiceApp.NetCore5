@@ -8,9 +8,6 @@ namespace Basket.API.Data.Intefaces
 {
     public interface IBasketContext
     {
-        public interface IBasketContext
-        {
-            IDatabase Redis { get; }
-        }
+        IDatabase Redis { get; }
     }
 }
