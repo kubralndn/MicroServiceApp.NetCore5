@@ -24,15 +24,15 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(BasketCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<BasketCart>> GetBasket(string userName)
         {
-            var basket = _repository.GetBasket(userName);
-            return  Ok(basket);
+            var basket = await _repository.GetBasket(userName);
+            return  Ok(basket ?? new BasketCart(userName));
         }
 
         [HttpPost]
         [ProducesResponseType(typeof(BasketCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<BasketCart>> UpdateBasket([FromBody] BasketCart basket)
         {
-            return Ok(_repository.UpdateBasket(basket));
+            return Ok(await _repository.UpdateBasket(basket));
             
         }
 
@@ -40,7 +40,7 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(BasketCart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<BasketCart>> DeleteBasket(string userName)
         {
-            return Ok(_repository.DeleteBasket(userName));
+            return Ok(await _repository.DeleteBasket(userName));
 
         }
     }
